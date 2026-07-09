@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Japan Phrases</title>
+<style>
+:root { color-scheme: light dark; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif; }
+body { background: #f8fafc; color: #0f172a; padding: 56px 0 64px; font-size: 16px; }
+body.dark { background: #0f172a; color: #f1f5f9; }
+
+.top {
+  position: fixed; top: 0; left: 0; right: 0; height: 56px;
+  background: #be185d; color: white; display: flex; align-items: center; gap: 8px;
+  padding: 0 12px; z-index: 50;
+}
+.top h1 { font-size: 1.05rem; font-weight: 700; flex: 1; }
+.top button { background: rgba(255,255,255,.18); border: 0; color: white; padding: 6px 10px; border-radius: 8px; font-size: 1.1rem; min-width: 40px; min-height: 40px; }
+
+.tabs {
+  position: fixed; bottom: 0; left: 0; right: 0; height: 64px;
+  background: white; border-top: 1px solid #e5e7eb; display: grid;
+  grid-template-columns: repeat(5, 1fr); z-index: 50;
+}
+body.dark .tabs { background: #1e293b; border-top-color: #334155; }
+.tabs button {
+  background: none; border: 0; color: #64748b; font-size: 0.7rem;
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 8px 4px; font-family: inherit; cursor: pointer;
+}
+body.dark .tabs button { color: #94a3b8; }
+.tabs button[aria-current="page"] { color: #be185d; }
+.tabs button[aria-current="page"] .ic { transform: scale(1.15); }
+.tabs .ic { font-size: 1.35rem; line-height: 1; }
+
+.search {
+  position: fixed; top: 56px; left: 0; right: 0;
+  background: white; border-bottom: 1px solid #e5e7eb; padding: 10px;
+  display: none; z-index: 40;
+}
+body.dark .search { background: #1e293b; border-bottom-color: #334155; }
+.search.open { display: block; }
+.search input {
+  width: 100%; padding: 10px 12px; border: 1px solid #cbd5e1;
+  border-radius: 10px; font-size: 1rem; background: #f8fafc; color: #0f172a;
+  font-family: inherit;
+}
+body.dark .search input { background: #0f172a; color: #f1f5f9; border-color: #334155; }
+
+main { max-width: 720px; margin: 0 auto; padding: 12px 14px 80px; }
+h2 { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 4px; }
+.blurb { color: #64748b; font-size: 0.9rem; margin-bottom: 16px; }
+body.dark .blurb { color: #94a3b8; }
+
+.row {
+  background: white; border: 1px solid #e5e7eb; border-radius: 14px;
+  padding: 12px 14px; margin-bottom: 10px;
+}
+body.dark .row { background: #1e293b; border-color: #334155; }
+.row .top-row { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 4px; }
+.row .romaji {
+  font-size: 1.15rem; font-weight: 700; flex: 1; letter-spacing: -0.005em;
+  word-break: break-word;
+}
+.row .play {
+  background: #f1f5f9; border: 0; color: #475569; border-radius: 999px;
+  padding: 4px 10px; font-size: 0.95rem; cursor: pointer; min-width: 38px;
+  min-height: 36px;
+}
+body.dark .row .play { background: #334155; color: #cbd5e1; }
+.row .en { color: #64748b; font-size: 0.95rem; margin-bottom: 6px; }
+body.dark .row .en { color: #94a3b8; }
+.row .use {
+  font-size: 0.85rem; color: #64748b; background: #fdf2f8;
+  padding: 6px 10px; border-radius: 8px; border-left: 3px solid #be185d;
+}
+body.dark .row .use { color: #cbd5e1; background: #500724; }
+
+.grammar-card {
+  background: white; border: 1px solid #e5e7eb; border-left: 4px solid #be185d;
+  border-radius: 14px; padding: 14px 16px; margin-bottom: 12px;
+}
+body.dark .grammar-card { background: #1e293b; border-color: #334155; }
+.grammar-card .h { font-weight: 700; margin-bottom: 6px; }
+.grammar-card .rule { font-size: 0.92rem; margin-bottom: 4px; }
+.grammar-card .ex {
+  font-size: 0.88rem; color: #64748b; margin-top: 4px;
+  padding: 6px 10px; background: #fdf2f8; border-radius: 8px;
+}
+body.dark .grammar-card .rule { color: #cbd5e1; }
+body.dark .grammar-card .ex { color: #cbd5e1; background: #500724; }
+
+.tag { display: inline-block; background: #fdf2f8; color: #be185d; font-size: 0.72rem; padding: 2px 8px; border-radius: 999px; margin-right: 4px; margin-top: 4px; }
+body.dark .tag { background: #500724; }
+
+.empty { text-align: center; color: #64748b; padding: 40px 16px; font-size: 0.92rem; }
+</style>
+</head>
+<body>
+
+<div class="top">
+  <h1>🇯🇵 Japan Phrases</h1>
+  <button id="searchBtn" aria-label="Search">🔍</button>
+  <button id="darkBtn" aria-label="Dark mode" aria-pressed="false">🌙</button>
+</div>
+
+<div class="search" id="searchBar">
+  <input id="searchInput" type="search" placeholder="Search English or romaji…" autocomplete="off">
+</div>
+
+<main id="view"></main>
+
+<nav class="tabs" id="tabs"></nav>
+
+<script>
+// ── Data ──────────────────────────────────────────────────────────────
+// Each phrase: { cat, romaji, en, use, polite }. Categories: shop, food, dir, weather, gram.
+// "use" is a 1-line context for when to reach for this phrase.
+const PHRASES = [
+  // ── shop ────────────────────────────────────────────────────────
+  { cat:'shop', romaji:'ikura desu ka?',                 en:'How much is it?',                 use:'Point and ask. Pairs with Numbers.', polite:true },
+  { cat:'shop', romaji:'kore o kudasai',                en:'I\'ll take this one.',            use:'At any shop. Point + say.', polite:true },
+  { cat:'shop', romaji:'kore wa nan desu ka?',          en:'What is this?',                   use:'Curiosity about an unfamiliar item.', polite:true },
+  { cat:'shop', romaji:'hitotsu arimasu ka?',           en:'Do you have one (piece)?',        use:'Generic "do you have X" — hitotsu = one, but for "do you have size M?" replace with the size name.', polite:true },
+  { cat:'shop', romaji:'shichaku dekimasu ka?',         en:'Can I try this on?',              use:'Clothing. They\'ll nod and point to a mirror.', polite:true },
+  { cat:'shop', romaji:'mite dake desu',               en:'Just looking.',                   use:'Politely decline help staff who approach.', polite:true },
+  { cat:'shop', romaji:'hoka no iro wa arimasu ka?',    en:'Do you have another color?',       use:'Clothing/objects.', polite:true },
+  { cat:'shop', romaji:'tsukamete mite ii desu ka?',     en:'May I pick it up to look?',       use:'Fragile/displayed goods.', polite:true },
+  { cat:'shop', romaji:'koko ni kaemasu ka?',           en:'Can I pay here?',                 use:'When you don\'t know where to pay (table charge, register counter).', polite:true },
+  { cat:'shop', romaji:'genkin de onegai shimasu',      en:'Cash, please.',                    use:'Many small shops are cash only — declare before they ring you up.', polite:true },
+  { cat:'shop', romaji:'fukuro wa daijoubu desu',       en:'I don\'t need a bag.',             use:'Bags cost 3-5 yen. Refuse politely.', polite:true },
+
+  // ── food ────────────────────────────────────────────────────────
+  { cat:'food', romaji:'menyuu o onegai shimasu',        en:'Menu, please.',                   use:'First thing after you sit down.', polite:true },
+  { cat:'food', romaji:'kore o onegai shimasu',         en:'This one, please.',               use:'Point at menu or photo display.', polite:true },
+  { cat:'food', romaji:'osusume wa nan desu ka?',       en:'What do you recommend?',         use:'Often leads to off-menu specials at family spots.', polite:true },
+  { cat:'food', romaji:'eigo no menyuu wa arimasu ka?', en:'Do you have an English menu?',   use:'Big chains and tourist areas usually do.', polite:true },
+  { cat:'food', romaji:'mizu o kudasai',               en:'Water, please.',                  use:'Tap water is free and normal everywhere.', polite:true },
+  { cat:'food', romaji:'biiru o onegai shimasu',        en:'A beer, please.',                 use:'Casual. Use hitotsu/biru/eto for other counts.', polite:true },
+  { cat:'food', romaji:'ocha o kudasai',               en:'Tea, please.',                    use:'Most restaurants bring tea automatically — this is to ask for more.', polite:true },
+  { cat:'food', romaji:'karuku shinai de kudasai',      en:'Not spicy, please.',              use:'Some ramen and regional dishes default to very spicy.', polite:true },
+  { cat:'food', romaji:'bejitarian desu',              en:'I\'m vegetarian.',                use:'Vague — Japanese dashi (fish stock) is in most things. See allergy card next.', polite:true },
+  { cat:'food', romaji:'~ arerugii ga arimasu',        en:'I have a ~ allergy.',             use:'SAFETY PHRASE. The ~ slot = the allergen: peanuts=piinattsu, shellfish=kai-rui, soy=daizu, wheat=komugi, egg=tamago, milk=gyuunyuu, sesame=goma.', polite:true },
+  { cat:'food', romaji:'okaikei o onegai shimasu',      en:'The check, please.',              use:'Hand signal of crossing index fingers (X) also works.', polite:true },
+  { cat:'food', romaji:'betsubetsu de onegai shimasu',  en:'Split the bill, please.',         use:'Many places won\'t split. Plan to pay together as backup.', polite:true },
+  { cat:'food', romaji:'kaado de haraemasu ka?',       en:'Can I pay by card?',              use:'Cash is still common. Even card places may have a minimum (~¥5,000).', polite:true },
+  { cat:'food', romaji:'oishii desu',                  en:'It\'s delicious.',                use:'Staff genuinely light up hearing this. May bring free refills next visit.', polite:true },
+  { cat:'food', romaji:'gochisousama deshita',         en:'Thanks for the meal (leaving).',  use:'Said on the way out, to the staff. Just "say it" even though it doesn\'t translate.', polite:true },
+  { cat:'food', romaji:'itadakimasu',                  en:'(Said before eating) thanks.',    use:'Saying it before eating is part of the experience. Locals love to hear it.', polite:true },
+
+  // ── dir (directions) ───────────────────────────────────────────
+  { cat:'dir', romaji:'~ wa doko desu ka?',            en:'Where is ~ ?',                    use:'The universal location phrase. Slot in a place name.', polite:true },
+  { cat:'dir', romaji:'kono juusho e onegai shimasu', en:'To this address, please.',       use:'SAFETY PHRASE for taxis. Show on phone. Driver nods.', polite:true },
+  { cat:'dir', romaji:'~ e ikitai desu',              en:'I want to go to ~.',              use:'Taxis or info desks. Slot in the destination.', polite:true },
+  { cat:'dir', romaji:'eki wa doko desu ka?',         en:'Where is the station?',           use:'Trains are the default intercity mode.', polite:true },
+  { cat:'dir', romaji:'kore wa ~ ni tomarimasu ka?',   en:'Does this stop at ~ ?',           use:'Show the stop name on your phone before boarding unfamiliar trains.', polite:true },
+  { cat:'dir', romaji:'shuuden wa nan-ji desu ka?',   en:'What time is the last train?',    use:'Critical at night. Cities shut down after last train.', polite:true },
+  { cat:'dir', romaji:'aruite dore kurai desu ka?',   en:'How long on foot?',               use:'Minutes. Realistic estimate for walking distance.', polite:true },
+  { cat:'dir', romaji:'massugu desu ka?',              en:'Is it straight ahead?',           use:'Quick confirm at a junction.', polite:true },
+  { cat:'dir', romaji:'migi desu ka, hidari desu ka?',en:'Right or left?',                  use:'Final confirmation before turning.', polite:true },
+  { cat:'dir', romaji:'chizu de misete kudasai',       en:'Could you show me on a map?',      use:'Catch-all fallback for any direction problem.', polite:true },
+  { cat:'dir', romaji:'takushii o yonde kudasai',     en:'Please call a taxi.',             use:'Hotels/restaurants can dial for you; arrives in 5-10 min.', polite:true },
+  { cat:'dir', romaji:'eki made ikura desu ka?',      en:'How much is the fare to the station?', use:'Approximate taxi cost to avoid surprises.', polite:true },
+
+  // ── weather ───────────────────────────────────────────────────
+  { cat:'weather', romaji:'kyou wa ii tenki desu ne',  en:'Nice weather today, isn\'t it?',  use:'Universal small talk opener. Makes shopkeepers smile.', polite:false },
+  { cat:'weather', romaji:'atsui desu ne',             en:'It\'s hot, isn\'t it?',             use:'Summer go-to. Workers appreciate acknowledgment.', polite:false },
+  { cat:'weather', romaji:'samui desu ne',             en:'It\'s cold, isn\'t it?',            use:'Winter go-to.', polite:false },
+  { cat:'weather', romaji:'ame ga futte imasu ne',     en:'It\'s raining, isn\'t it?',        use:'Universal. Mentioning rain is friendly chat with taxi drivers.', polite:false },
+  { cat:'weather', romaji:'ashita mo ii tenki desu ka?',en:'Will tomorrow be nice weather?', use:'For hotel staff, restaurant hosts.', polite:true },
+  { cat:'weather', romaji:'kore wa nan desu ka?',      en:'What is this?',                   use:'Catch-all for food, item, building.', polite:true },
+  { cat:'weather', romaji:'dooshite koo iu no?',       en:'Why is it like this?',            use:'For curiosity: prices, queues, someone\'s outfit.', polite:true },
+  { cat:'weather', romaji:'~ kara kimashita',          en:'I\'m from ~.',                     use:'Talking about yourself. Slot in country name. Makes strangers instantly friendlier.', polite:true },
+  { cat:'weather', romaji:'~ ni ikimasen ka?',         en:'Will you go to ~ ?',              use:'Chatty. Slot in place name. Common retiree/train-mate topic.', polite:false },
+  { cat:'weather', romaji:'gohan wa mō su·mimasen ka?', en:'Have you eaten yet?',            use:'Classic casual opener (esp. elderly people). Slangy gohan = "su-mimasen". Skip with colleagues.', polite:false },
+  { cat:'weather', romaji:'hai, genki desu',           en:'Yes, I\'m fine / doing well.',      use:'Reply to "genki desu ka?" (how are you?). Always safe.', polite:false },
+  { cat:'weather', romaji:'shashin o totte moraemasu ka?',en:'Could you take a photo of me?', use:'Hand your phone to a passerby.', polite:true },
+  { cat:'weather', romaji:'ii omise deshita',          en:'That\'s a nice place you have.',   use:'Omiyage compliment when leaving a shop, ryokan, or restaurant. Always welcome.', polite:true },
+
+  // ── gram (grammar) — different render: full card with rule + examples
+  { cat:'gram', isGrammar:true,
+    title:'WA — topic marker',
+    rule:'Marks what you\'re talking ABOUT ("as for X..."). The greeting words "konnichiwa" / "konbanwa" end in this WA — it\'s always read "wa", never "ha", when used as a particle.',
+    examples:[
+      { romaji:'toire wa doko desu ka?',     en:'As for the toilet, where is it?' },
+      { romaji:'kore wa nan desu ka?',       en:'What is this?' },
+    ] },
+  { cat:'gram', isGrammar:true,
+    title:'O — object marker',
+    rule:'Marks the thing you do something to. The particle is always silent-written "o" (the kana を is read "o" only here as a particle).',
+    examples:[
+      { romaji:'kore o kudasai',             en:'This, please (give me this one)' },
+      { romaji:'mizu o kudasai',             en:'Water, please' },
+      { romaji:'shashin o totte ii desu ka?', en:'May I take a photo?' },
+    ] },
+  { cat:'gram', isGrammar:true,
+    title:'GA — subject marker',
+    rule:'Marks the doer/subject, OR the thing that exists. WA = known topic, GA = introducing/emphasizing. Get this wrong and natives will still understand you — it\'s mostly for emphasis.',
+    examples:[
+      { romaji:'gochisousama deshita', en:'Was (delicious) — past tense of "desu"' },
+      { romaji:'ame ga futte imasu',  en:'Rain is falling — natural subject' },
+    ] },
+  { cat:'gram', isGrammar:true,
+    title:'NI — destination, time, location of existence',
+    rule:'Three uses: (1) "to" a place (go to Kyoto), (2) "at" a specific time (at 5 o\'clock), (3) "in/on" where something exists (cup on table).',
+    examples:[
+      { romaji:'kyoto ni ikitai desu',   en:'I want to go to Kyoto' },
+      { romaji:'go-ji ni aimasu',        en:'Let\'s meet at 5 o\'clock' },
+    ] },
+  { cat:'gram', isGrammar:true,
+    title:'DE — means OR location of action',
+    rule:'"With / by" (instrument) or "at" (where action happens). Two uses, one particle.',
+    examples:[
+      { romaji:'genkin de haraimasu',    en:'I\'ll pay by cash' },
+      { romaji:'chizu de misete kudasai', en:'Show me on a map (using a map)' },
+    ] },
+  { cat:'gram', isGrammar:true,
+    title:'E — direction toward',
+    rule:'Soft "toward" — go TOWARD something. Written "he" but always read "e" as a particle. Less common than NI for destinations, more common for expressing direction/aim.',
+    examples:[
+      { romaji:'kono juusho e onegai shimasu', en:'To this address, please' },
+    ] },
+  { cat:'gram', isGrammar:true,
+    title:'Politeness: -DESU and -MASU',
+    rule:'Add "-desu" to nouns/adjectives, "-masu" to verbs. This is all you need for shops, hotels, restaurants, taxis. With friends/casual acquaintances, plain forms ("daijoubu" not "daijoubu desu") are fine.',
+    examples:[
+      { romaji:'ikura desu ka?',    en:'How much is it? (polite)' },
+      { romaji:'arimasen',         en:'There isn\'t / I don\'t have (casual/polite short form)' },
+    ] },
+  { cat:'gram', isGrammar:true,
+    title:'Asking yes/no: just add KA at the end',
+    rule:'No inversion, no "do you". State your question as a statement and append KA. Rising intonation.',
+    examples:[
+      { romaji:'ikura desu ka?',           en:'How much?' },
+      { romaji:'eigo o hanasemasu ka?',   en:'Do you speak English?' },
+      { romaji:'kore o kaemasu ka?',      en:'Can I pay here?' },
+    ] },
+  { cat:'gram', isGrammar:true,
+    title:'Two ways to say "please"',
+    rule:'"Kudasai" attached to a verb = direct please (give me / do it). "Onegai shimasu" alone = softer/broader request (I request, please handle this). Both are polite.',
+    examples:[
+      { romaji:'mizu o kudasai',            en:'Water, please (direct)' },
+      { romaji:'menyuu o onegai shimasu',   en:'The menu, please (broader)' },
+    ] },
+];
+
+const CATEGORIES = [
+  { id:'shop',    label:'Shop',   icon:'🛒' },
+  { id:'food',    label:'Food',   icon:'🍱' },
+  { id:'dir',     label:'Going',  icon:'🗺' },
+  { id:'weather', label:'Talk',   icon:'☀️' },
+  { id:'gram',    label:'Grammar',icon:'⚡' },
+];
+
+// ── State ─────────────────────────────────────────────────────────────
+const state = {
+  view: 'shop',
+  query: '',
+  dark: JSON.parse(localStorage.getItem('jp.dark') || 'false'),
+};
+
+// ── Voice ─────────────────────────────────────────────────────────────
+let jaVoice = null;
+function pickVoice() {
+  if (!('speechSynthesis' in window)) return;
+  jaVoice = speechSynthesis.getVoices().find(v => /ja[-_]JP/i.test(v.lang)) || null;
+}
+if ('speechSynthesis' in window) {
+  pickVoice();
+  speechSynthesis.addEventListener?.('voiceschanged', pickVoice);
+}
+function speak(text) {
+  if (!('speechSynthesis' in window) || !text || !jaVoice) return;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'ja-JP';
+  u.rate = 0.9;
+  u.voice = jaVoice;
+  speechSynthesis.cancel();
+  speechSynthesis.speak(u);
+}
+
+// ── Render ─────────────────────────────────────────────────────────────
+const view = document.getElementById('view');
+
+function escHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function renderPhraseRow(p) {
+  const div = document.createElement('div');
+  div.className = 'row';
+  const tag = p.polite === false ? '<span class="tag">casual</span>' : '<span class="tag">polite</span>';
+  div.innerHTML = `
+    <div class="top-row">
+      <div class="romaji">${escHtml(p.romaji)}</div>
+      <button class="play" data-say="${escHtml(p.romaji)}" aria-label="Play">${jaVoice ? '▶' : '♪'}</button>
+    </div>
+    <div class="en">${escHtml(p.en)}</div>
+    ${p.use ? `<div class="use">${escHtml(p.use)}</div>` : ''}
+    ${tag}
+  `;
+  return div;
+}
+
+function renderGrammarCard(c, cat) {
+  const div = document.createElement('div');
+  div.className = 'grammar-card';
+  const exs = (c.examples || []).map(ex => `
+    <div class="ex" style="display:flex;gap:8px;align-items:flex-start">
+      <div style="flex:1"><strong>${escHtml(ex.romaji)}</strong><br><span style="color:#64748b">${escHtml(ex.en)}</span></div>
+      <button class="play" data-say="${escHtml(ex.romaji)}" aria-label="Play" style="margin-top:0">${jaVoice ? '▶' : '♪'}</button>
+    </div>
+  `).join('');
+  div.innerHTML = `
+    <div class="h">${escHtml(c.title)}</div>
+    <div class="rule">${escHtml(c.rule)}</div>
+    ${exs ? `<div style="margin-top:8px;font-size:0.75rem;color:#64748b;text-transform:uppercase;letter-spacing:0.08em">Examples</div><div>${exs}</div>` : ''}
+  `;
+  return div;
+}
+
+function renderCategory(cat) {
+  view.innerHTML = '';
+  const meta = CATEGORIES.find(c => c.id === cat);
+  const title = document.createElement('h2');
+  title.textContent = meta.icon + ' ' + meta.label;
+  view.appendChild(title);
+
+  const sub = document.createElement('div');
+  sub.className = 'blurb';
+  const blurbs = {
+    shop:    'Asking prices, picking things out, paying. Always polite form unless told otherwise.',
+    food:    'Ordering, allergies, splitting the check. Allergy phrases are SAFETY — learn them.',
+    dir:     'Taxis, trains, asking "where is it". The address and "do you speak English" cover 90% of getting lost.',
+    weather: 'Small talk, getting-to-know-you. The "I\'m from ~" line and the compliment line earn more goodwill than perfect grammar.',
+    gram:    'The minimum particles and patterns that show up in everything else. Read these once, then go use them.',
+  };
+  sub.textContent = blurbs[cat] || '';
+  view.appendChild(sub);
+
+  const items = PHRASES.filter(p => p.cat === cat);
+  if (!items.length) {
+    view.innerHTML += '<div class="empty">Nothing here yet.</div>';
+    return;
+  }
+  for (const item of items) {
+    if (item.isGrammar) view.appendChild(renderGrammarCard(item, cat));
+    else view.appendChild(renderPhraseRow(item));
+  }
+}
+
+function renderSearch() {
+  view.innerHTML = '';
+  const h = document.createElement('h2');
+  h.textContent = '🔎 Search';
+  view.appendChild(h);
+  const sub = document.createElement('div');
+  sub.className = 'blurb';
+  sub.textContent = 'Type in English or romaji (e.g. "toilet", "vegetarian", "eki").';
+  view.appendChild(sub);
+
+  const q = state.query.trim().toLowerCase();
+  if (!q) {
+    const empty = document.createElement('div');
+    empty.className = 'empty';
+    empty.textContent = 'Try: "toilet", "vegetarian", "credit", "taxi", "tea", "rain"';
+    view.appendChild(empty);
+    return;
+  }
+  const tokens = q.split(/\s+/).filter(Boolean);
+  const hits = [];
+  for (const p of PHRASES) {
+    if (p.isGrammar) continue;
+    const hay = (p.romaji + ' ' + p.en + ' ' + (p.use || '')).toLowerCase();
+    if (tokens.every(t => hay.includes(t))) hits.push(p);
+  }
+  if (!hits.length) {
+    const empty = document.createElement('div');
+    empty.className = 'empty';
+    empty.textContent = 'No matches for "' + state.query + '". Try simpler keywords.';
+    view.appendChild(empty);
+    return;
+  }
+  for (const h2 of hits) view.appendChild(renderPhraseRow(h2));
+}
+
+// ── Tab bar ───────────────────────────────────────────────────────────
+const tabsEl = document.getElementById('tabs');
+function renderTabs() {
+  tabsEl.innerHTML = '';
+  for (const c of CATEGORIES) {
+    const b = document.createElement('button');
+    b.dataset.view = c.id;
+    b.innerHTML = `<span class="ic">${c.icon}</span><span>${c.label}</span>`;
+    b.setAttribute('aria-current', state.view === c.id ? 'page' : 'false');
+    b.onclick = () => setView(c.id);
+    tabsEl.appendChild(b);
+  }
+}
+
+function setView(v) {
+  state.view = v;
+  state.query = '';
+  document.getElementById('searchBar').classList.remove('open');
+  document.getElementById('searchInput').value = '';
+  renderTabs();
+  if (v === 'search') renderSearch(); else renderCategory(v);
+}
+
+// ── Handlers ──────────────────────────────────────────────────────────
+document.getElementById('searchBtn').onclick = () => {
+  if (state.view === 'search') { setView('shop'); return; }
+  state.view = 'search';
+  renderTabs();
+  document.getElementById('searchBar').classList.add('open');
+  document.getElementById('searchInput').focus();
+  renderSearch();
+};
+document.getElementById('searchInput').addEventListener('input', (e) => {
+  state.query = e.target.value;
+  renderSearch();
+});
+document.getElementById('darkBtn').onclick = () => {
+  state.dark = !state.dark;
+  document.body.classList.toggle('dark', state.dark);
+  document.getElementById('darkBtn').setAttribute('aria-pressed', String(state.dark));
+  localStorage.setItem('jp.dark', String(state.dark));
+};
+
+// event delegation for play buttons
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('[data-say]');
+  if (!btn) return;
+  e.preventDefault();
+  speak(btn.dataset.say);
+});
+
+document.body.classList.toggle('dark', state.dark);
+document.getElementById('darkBtn').setAttribute('aria-pressed', String(state.dark));
+renderTabs();
+renderCategory(state.view);
+</script>
+</body>
+</html>
