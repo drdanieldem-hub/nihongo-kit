@@ -123,7 +123,8 @@
 
   // ─── Render: section list ───────────────────────────────────────
   function renderSection(secId) {
-    const sec = SECTIONS[secId];
+    var sec = SECTIONS[secId];
+    console.log('renderSection(', secId, ') sec=', !!sec, 'phrases=', sec && sec.phrases && sec.phrases.length);
     if (!sec) return renderHome();
     view.innerHTML = '';
     const h2 = document.createElement('h2');
@@ -401,12 +402,27 @@
   });
 
   // ─── Boot ───────────────────────────────────────────────────────
-  detectVoice();
-  loadDark();
-  loadFavorites();
-  fromHash();
-  render();
-  // Try voice detection again shortly (some browsers populate voices async)
-  setTimeout(detectVoice, 500);
-  setTimeout(detectVoice, 2000);
+  function boot() {
+    try {
+      detectVoice();
+      loadDark();
+      loadFavorites();
+      fromHash();
+      render();
+      setTimeout(detectVoice, 500);
+      setTimeout(detectVoice, 2000);
+    } catch (e) {
+      console.error('Boot failed:', e && e.message, e && e.stack);
+      var view = document.getElementById('view');
+      if (view) {
+        view.innerHTML = '<pre style="color:#b91c1c;padding:16px;white-space:pre-wrap;font-family:ui-monospace,monospace;font-size:13px">' +
+          (e && (e.message + '\\n' + (e.stack || '').slice(0, 1200)).replace(/</g, '&lt;')) + '</pre>';
+      }
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
 })();
