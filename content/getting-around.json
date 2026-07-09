@@ -1,0 +1,238 @@
+{
+  "id": "getting-around",
+  "title": "Getting Around",
+  "icon": "🗺",
+  "blurb": "Trains, taxis, walking. Most Japanese transit signs you'll need to read are romanized on this app.",
+  "phrases": [
+    {
+      "id": "ga-doko",
+      "romaji": "~ wa doko desu ka?",
+      "en": "Where is ~ ?",
+      "use": "The universal location question. Drop in any place name. Tap the slot to type yours.",
+      "note": "Lit. 'as for [thing], where is it?'",
+      "tags": ["essential", "direction"],
+      "polite": true,
+      "placeholders": [
+        {"token": "PLACE", "label": "place name", "example": "Tokyo Station"}
+      ]
+    },
+    {
+      "id": "ga-jusho",
+      "romaji": "kono juusho e onegai shimasu",
+      "en": "To this address, please",
+      "use": "Show the address on your phone. Best taxi phrase — driver just nods.",
+      "note": "kono JU-sho e oh-neh-GAI she-MAS.",
+      "tags": ["essential", "taxi"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "ga-ikitai",
+      "romaji": "~ e ikitai desu",
+      "en": "I want to go to ~",
+      "use": "Tell a taxi driver where. Or an info-center staffer to confirm a route.",
+      "note": "Lit. 'I want to go to [place]'.",
+      "tags": ["taxi"],
+      "polite": true,
+      "placeholders": [
+        {"token": "PLACE", "label": "place name", "example": "Shinjuku"}
+      ]
+    },
+    {
+      "id": "ga-made-ikura",
+      "romaji": "~ made ikura desu ka?",
+      "en": "How much to get to ~ ?",
+      "use": "Taxi fare estimate before you get in. Drivers won't quote too aggressively.",
+      "note": "Mah-deh EE-koo-rah des ka.",
+      "tags": ["taxi", "money"],
+      "polite": true,
+      "placeholders": [
+        {"token": "PLACE", "label": "destination", "example": "the station"}
+      ]
+    },
+    {
+      "id": "ga-eki",
+      "romaji": "eki wa doko desu ka?",
+      "en": "Where is the station?",
+      "use": "Trains are the default way to travel between cities. Stations are everywhere.",
+      "note": "Eh-key wah DOH-ko des ka.",
+      "tags": ["essential", "transit"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "ga-yuki",
+      "romaji": "~ yuki wa dono hoomu desu ka?",
+      "en": "Which platform for ~ ?",
+      "use": "Standing in a station, lots of platforms. Ask staff at the info booth.",
+      "note": "yuki = bound for. Hoomu = platform (Japanese-adapted 'platform').",
+      "tags": ["transit"],
+      "polite": true,
+      "placeholders": [
+        {"token": "DEST", "label": "destination", "example": "Kyoto"}
+      ]
+    },
+    {
+      "id": "ga-tomaru",
+      "romaji": "kore wa ~ ni tomarimasu ka?",
+      "en": "Does this stop at ~ ?",
+      "use": "Before boarding a train in an unfamiliar station. Spot-check by showing the destination in romaji on your phone.",
+      "note": "TOH-mah-ree-mas ka.",
+      "tags": ["transit"],
+      "polite": true,
+      "placeholders": [
+        {"token": "STOP", "label": "station/stop name", "example": "Shinjuku"}
+      ]
+    },
+    {
+      "id": "ga-nanbansen",
+      "romaji": "nan-bansen desu ka?",
+      "en": "Which track / platform number?",
+      "use": "At JR stations with numbered platforms.",
+      "note": "Ban-sen = track line. Nahn-BAHN-sen des ka.",
+      "tags": ["transit"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "ga-shitei",
+      "romaji": "shinkansen no shitei-seki o onegai shimasu",
+      "en": "A reserved seat on the shinkansen, please",
+      "use": "At any JR ticket office. Specify shinkansen + reserved = they book. Buy early in peak season.",
+      "note": "shinkansen no shee-TAY-seh-kee oh neh-GAI she-MAS.",
+      "tags": ["transit"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "ga-jiyuu",
+      "romaji": "jiyuu-seki wa arimasu ka?",
+      "en": "Is there non-reserved seating?",
+      "use": "Cheaper than reserved, available same-day, but you might not get a seat.",
+      "note": "Jee-YOO sek-key wah ah-ree-MAS ka.",
+      "tags": ["transit"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "ga-charge",
+      "romaji": "IC kaado ni chaaji shitai desu",
+      "en": "I want to top up my IC card",
+      "use": "Suica/Pasmo/ICOCA cards. Tap your card at any ticket machine or ask station staff.",
+      "note": "IC = integrated circuit, the standard English nickname for stored-value transit cards.",
+      "tags": ["transit", "money"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "ga-suika",
+      "romaji": "Suika de haraemasu ka?",
+      "en": "Can I pay with Suica?",
+      "use": "Most ticket machines, vending machines, and chain restaurants take IC cards.",
+      "note": "Say 'IC' if they're not familiar with the specific brand name.",
+      "tags": ["transit", "money"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "ga-ichinichi",
+      "romaji": "ichinichi-joushaken wa arimasu ka?",
+      "en": "Do you have a day pass?",
+      "use": "Unlimited rides for a day. Subway/bus pass types vary by city; ask the staff which suits you.",
+      "note": "EE-chee-NEECH-ee.",
+      "tags": ["transit"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "ga-aruite",
+      "romaji": "aruite dore kurai desu ka?",
+      "en": "How long on foot?",
+      "use": "Useful when getting off at the wrong station or checking if a taxi is worth it.",
+      "note": "Ah-ree-OO-teh DOH-reh KOO-rai des ka.",
+      "tags": ["direction"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "ga-tooitoi",
+      "romaji": "koko kara tooi desu ka?",
+      "en": "Is it far from here?",
+      "use": "Quick check before committing to walking.",
+      "note": "KOH-ko kah-rah TOH-ee des ka.",
+      "tags": ["direction"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "ga-massugu",
+      "romaji": "massugu desu ka?",
+      "en": "Is it straight ahead?",
+      "use": "When someone is pointing you down a street, this confirms 'just keep going' vs turn.",
+      "note": "Mahs-SOO-goo.",
+      "tags": ["direction"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "ga-migi",
+      "romaji": "migi desu ka, hidari desu ka?",
+      "en": "Right or left?",
+      "use": "Confirm before turning at a fork.",
+      "note": "MEE-gee / hee-DAH-ree.",
+      "tags": ["direction"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "ga-chizu",
+      "romaji": "chizu de misete kudasai",
+      "en": "Show me on the map, please",
+      "use": "Big-brain fallback for any direction problem. Front-desk staff have maps; so do most taxi drivers on their phones.",
+      "note": "Chee-zoo deh mee-SEH-teh koo-da-SAI.",
+      "tags": ["direction", "polite"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "ga-takushii",
+      "romaji": "takushii o yonde kudasai",
+      "en": "Please call a taxi.",
+      "use": "At your hotel, restaurant, or shop front. They dial for you; the taxi arrives in 5-10 min usually.",
+      "note": "Tahk-shee oh YON-deh koo-da-SAI.",
+      "tags": ["taxi"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "ga-shuuden",
+      "romaji": "shuuden wa nan-ji desu ka?",
+      "en": "What time is the last train?",
+      "use": "Critical at night — 'last train' (shuuden / saishuu ressha) is the city's bedtime.",
+      "note": "SHOO-den wah NAHN-jee des ka. 'shuuden' = last train.",
+      "tags": ["transit", "essential"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "ga-norikae",
+      "romaji": "norikae wa doko desu ka?",
+      "en": "Where do I transfer?",
+      "use": "Big stations (Tokyo, Shinjuku, Shibuya, Shinagawa) have multiple lines. Ask before boarding.",
+      "note": "No-ree-KAY-eh.",
+      "tags": ["transit"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "ga-hantai",
+      "romaji": "hantai-houkou deshita",
+      "en": "I went the wrong direction",
+      "use": "To a station staff after realizing you boarded the wrong way. They will direct you to the opposite platform.",
+      "note": "Hahn-tai HOH-koh desh-TA. Lit. 'it was the opposite direction'.",
+      "tags": ["transit"],
+      "polite": true,
+      "placeholders": []
+    }
+  ]
+}

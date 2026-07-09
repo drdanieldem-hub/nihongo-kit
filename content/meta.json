@@ -1,0 +1,7 @@
+{
+  "appTitle": "Nihongo Kit — Japan Survival Phrases",
+  "shortTitle": "Nihongo Kit",
+  "version": "0.1.0",
+  "sectionOrder": ["survival", "getting-around", "eating", "numbers-time-money", "hospitality"],
+  "disclaimer": "Romaji only — no Japanese script rendered."
+}

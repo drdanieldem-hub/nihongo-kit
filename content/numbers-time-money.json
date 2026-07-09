@@ -1,0 +1,162 @@
+{
+  "id": "numbers-time-money",
+  "title": "Numbers, Time & Money",
+  "icon": "💴",
+  "blurb": "Counters, time, paying. Japanese numbers have multiple counting words; this is the minimum.",
+  "phrases": [
+    {
+      "id": "nt-futari",
+      "romaji": "futari desu",
+      "en": "Two people.",
+      "use": "Restaurant entry. 'futari' = the irregular 2-people counter.",
+      "note": "Foo-TAH-ree des.",
+      "tags": ["numbers", "essential"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "nt-nanbmei",
+      "romaji": "~ mei desu",
+      "en": "~ people (for a party / table size)",
+      "use": "Drop in a number when entering. Hotels for room booking. Museums for entry.",
+      "note": "'mei' is the people counter. Numbers: 1=hitori, 2=futari, 3=san-nin, 4=yo-nin, 5=go-nin, 6=roku-nin, 7=nana-nin, 8=hachi-nin, 9=kyuu-nin, 10=jyu-nin.",
+      "tags": ["numbers"],
+      "polite": true,
+      "placeholders": [
+        {"token": "NUMBER", "label": "number of people", "example": "3"}
+      ]
+    },
+    {
+      "id": "nt-nanji",
+      "romaji": "nan-ji desu ka?",
+      "en": "What time is it?",
+      "use": "Universal time-question.",
+      "note": "Nahn-jee des ka.",
+      "tags": ["time", "essential"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "nt-ji-ni",
+      "romaji": "~ ji ni",
+      "en": "at ~ o'clock",
+      "use": "Time marker. Pair with a number and the suffix '-ji'.",
+      "note": "Numbers + ji: 1=ichi-ji, 2=ni-ji, 3=san-ji, 4=yo-ji, 5=go-ji, 6=roku-ji, 7=shichi-ji, 8=hachi-ji, 9=ku-ji, 10=jyu-ji, 11=jyu-ichi-ji, 12=jyu-ni-ji.",
+      "tags": ["time"],
+      "polite": true,
+      "placeholders": [
+        {"token": "HOUR", "label": "hour", "example": "5"}
+      ]
+    },
+    {
+      "id": "nt-ima-nanji",
+      "romaji": "ima nan-ji desu ka?",
+      "en": "What time is it now?",
+      "use": "More specific — 'ima' = now.",
+      "note": "EE-mah nan-jee des ka.",
+      "tags": ["time"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "nt-ikura",
+      "romaji": "ikura desu ka?",
+      "en": "How much?",
+      "use": "General price question. Pair with pointing.",
+      "note": "EE-koo-rah des ka.",
+      "tags": ["money", "essential"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "nt-zenbu",
+      "romaji": "zenbu de ikura desu ka?",
+      "en": "How much altogether?",
+      "use": "Confirms the running total before paying.",
+      "note": "ZEHN-boo deh EE-koo-rah des ka.",
+      "tags": ["money"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "nt-genkin-de",
+      "romaji": "genkin de haraimasu",
+      "en": "I'll pay cash.",
+      "use": "Pre-empts the cash-only awkward silence.",
+      "note": "GEHN-keen deh hah-rai-MAS.",
+      "tags": ["money"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "nt-card",
+      "romaji": "kaado de haraemasu ka?",
+      "en": "Can I pay by card?",
+      "use": "Card-accepting places include the sign; non-card places often have a generic 'no card' sign. Asking saves guessing.",
+      "note": "KAR-doh deh hah-rah-eh-MAS ka.",
+      "tags": ["money"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "nt-ic",
+      "romaji": "IC kaado de",
+      "en": "By IC card (tap).",
+      "use": "Whisper while tapping your card. Servers understand.",
+      "note": "Suica/Pasmo/ICOCA/etc. all work on each other's networks in most regions.",
+      "tags": ["money", "transit"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "nt-receipt",
+      "romaji": "ryoushuusho o onegai shimasu",
+      "en": "A receipt, please.",
+      "use": "Business travelers especially. Most places can print one.",
+      "note": "Ree-OH-shoo-shoh oh neh-GAI she-MAS.",
+      "tags": ["money"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "nt-fukuro",
+      "romaji": "fukuro wa irimasen",
+      "en": "I don't need a bag.",
+      "use": "Plastic bags cost 3-5 yen. Most people refuse; it adds up across a trip.",
+      "note": "Foo-koo-roh wa ee-ree-mah-sen.",
+      "tags": ["money"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "nt-chotto",
+      "romaji": "chotto matte kudasai",
+      "en": "Please wait a moment.",
+      "use": "Buys time to count coins or pull a card out. Polite.",
+      "note": "Choht-toh MAHT-teh koo-da-SAI.",
+      "tags": ["essential", "polite"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "nt-kozeni",
+      "romaji": "kozeni ga arimasen",
+      "en": "I don't have small change.",
+      "use": "When the cashier can only give you awkward change. Politely ask them to break a bill.",
+      "note": "Ko-ZEH-nee gah ah-ree-mah-sen.",
+      "tags": ["money"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "nt-ryougae",
+      "romaji": "ryougae dekimasu ka?",
+      "en": "Can I get change / exchange money?",
+      "use": "Some convenience stores will break large bills. ATM: use 7-Bank or JP-Post.",
+      "note": "Ree-oh-GAH-eh deh-kee-MAS ka.",
+      "tags": ["money"],
+      "polite": true,
+      "placeholders": []
+    }
+  ]
+}

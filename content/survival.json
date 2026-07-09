@@ -1,0 +1,208 @@
+{
+  "id": "survival",
+  "title": "Survival Kit",
+  "icon": "🆘",
+  "blurb": "The 20 phrases that get you through day one. Tap ▶ to hear it; tap ★ to save offline.",
+  "phrases": [
+    {
+      "id": "sv-sumimasen",
+      "romaji": "sumimasen",
+      "en": "Excuse me / Sorry",
+      "use": "Get attention, apologize, or thank someone for a small favor — the single most useful word in Japan.",
+      "note": "Say it softly: sue-mee-mah-SEN (rhymes with 'pen').",
+      "tags": ["essential", "greeting", "polite"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "sv-arigatou",
+      "romaji": "arigatou gozaimasu",
+      "en": "Thank you (polite)",
+      "use": "To shop staff, servers, anyone you don't know. Drop 'gozaimasu' only with close friends.",
+      "note": "Long-O is silent: ah-ree-GAH-toe go-ZAH-ee-mas.",
+      "tags": ["essential", "polite"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "sv-hai-iie",
+      "romaji": "hai / iie",
+      "en": "Yes / No",
+      "use": "Yes/no are simple. Real 'no' often comes through as 'chigaimasu' (that's different/wrong) to save face.",
+      "note": "hai = 'hi' (as in 'hip'), iie = 'ee-eh'.",
+      "tags": ["essential"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "sv-onegai",
+      "romaji": "onegai shimasu",
+      "en": "Please / I'd like this, please",
+      "use": "The all-purpose request word. Point, say this, get what you want. Works for almost any situation.",
+      "note": "Lit. 'I humbly request'. Soft, professional.",
+      "tags": ["essential", "polite"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "sv-daijoubu",
+      "romaji": "daijoubu desu",
+      "en": "I'm okay / No, thank you / It's fine",
+      "use": "Doubles as a polite refusal — 'daijoubu desu' to pushy free samples, last-minute offers, extra side dishes.",
+      "note": "DIE-joh-bu DES. Long-O shown in romaji = long sound (spell check helps).",
+      "tags": ["essential", "polite"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "sv-wakarimasen",
+      "romaji": "wakarimasen",
+      "en": "I don't understand",
+      "use": "When someone explains in Japanese and you don't get it. Add 'nihongo ga' to specify: 'I don't understand Japanese.'",
+      "note": "Wah-kah-ree-mah-SEN.",
+      "tags": ["essential"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "sv-eigo",
+      "romaji": "eigo o hanasemasu ka?",
+      "en": "Do you speak English?",
+      "use": "First line at a hotel desk or tourist info when you don't see English signage.",
+      "note": "'o' between words is a particle (object marker) — see grammar.",
+      "tags": ["essential"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "sv-yukkuri",
+      "romaji": "yukkuri onegai shimasu",
+      "en": "More slowly, please",
+      "use": "When someone is speaking too fast to catch.",
+      "note": "YOO-koo-ree. Doubled consonant = hold the sound.",
+      "tags": ["polite"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "sv-mou-ichido",
+      "romaji": "mou ichido onegai shimasu",
+      "en": "One more time, please",
+      "use": "Ask for a repeat. Pairs with 'mou ichido itte kudasai' if you want them to repeat a specific thing.",
+      "note": "Moh EE-chee-doh.",
+      "tags": ["polite"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "sv-gomen",
+      "romaji": "gomen nasai",
+      "en": "I'm sorry (apology)",
+      "use": "Stronger than sumimasen. Use when you actually did something — bumped someone, broke something.",
+      "note": "Go-MEN NAH-sigh. 'gomen' alone is casual/friendly.",
+      "tags": ["polite"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "sv-ohayo",
+      "romaji": "ohayou gozaimasu",
+      "en": "Good morning",
+      "use": "Until ~10am. With friends: 'ohayou' without gozaimasu.",
+      "note": "Oh-HI-oh go-ZAH-ee-mas.",
+      "tags": ["greeting"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "sv-konnichiwa",
+      "romaji": "konnichiwa",
+      "en": "Hello / Good afternoon",
+      "use": "Daytime greeting. The 'wa' in 'konnichiwa' is the topic particle written 'ha' (see grammar).",
+      "note": "Kon-NI-chi-wah.",
+      "tags": ["greeting"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "sv-konbanwa",
+      "romaji": "konbanwa",
+      "en": "Good evening",
+      "use": "After sunset. Same spelling/sound quirk as konnichiwa.",
+      "note": "Kon-BAN-wah.",
+      "tags": ["greeting"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "sv-hajimemashite",
+      "romaji": "hajimemashite",
+      "en": "Nice to meet you",
+      "use": "Only when meeting someone for the first time. Often followed by your name.",
+      "note": "Ha-jee-meh-MASH-teh.",
+      "tags": ["greeting"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "sv-tasukete",
+      "romaji": "tasukete!",
+      "en": "Help!",
+      "use": "Real emergency. Loud voice attracts bystanders who will help.",
+      "note": "Tah-su-KEH-teh. Casual urgency.",
+      "tags": ["emergency"],
+      "polite": false,
+      "placeholders": []
+    },
+    {
+      "id": "sv-toire",
+      "romaji": "toire wa doko desu ka?",
+      "en": "Where is the toilet?",
+      "use": "Works everywhere — restaurants, train stations, parks. Bonus: pointed alone gets you shown.",
+      "note": "Toy-reh wah DOH-ko des ka.",
+      "tags": ["essential"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "sv-kore-nan",
+      "romaji": "kore wa nan desu ka?",
+      "en": "What is this?",
+      "use": "Pointing at an unfamiliar menu item or dish and getting a real answer.",
+      "note": "KOH-reh wah NAHN des ka.",
+      "tags": ["essential", "food"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "sv-ikura",
+      "romaji": "ikura desu ka?",
+      "en": "How much is it?",
+      "use": "Point and ask. Pair with the Numbers section to understand the answer.",
+      "note": "EE-koo-rah des ka.",
+      "tags": ["essential", "shopping"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "sv-nihongo-ga",
+      "romaji": "nihongo ga hanasemasen",
+      "en": "I can't speak Japanese",
+      "use": "Instant context-setter. People will either switch to English or gesture more carefully.",
+      "note": "Knee-HON-go ga hah-nah-seh-MAH-sen.",
+      "tags": ["essential"],
+      "polite": true,
+      "placeholders": []
+    },
+    {
+      "id": "sv-shashin",
+      "romaji": "shashin o totte mo ii desu ka?",
+      "en": "May I take a photo?",
+      "use": "Always ask at shrines, in private shops, when photographing staff, food, or interiors.",
+      "note": "Shah-SHIN oh TOOT-teh moh EE des ka.",
+      "tags": ["polite"],
+      "polite": true,
+      "placeholders": []
+    }
+  ]
+}
