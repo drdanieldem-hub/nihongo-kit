@@ -1,74 +1,40 @@
-# 🇯🇵 Nihongo Kit
+# 🇯🇵 Japan Phrases
 
-Mobile-first, romaji-only Japanese survival phrasebook for tourists. Built as
-a single-file PWA so it works offline the moment it's loaded — perfect for
-"the station basement has no signal" situations.
+Single-file mobile-first romaji-only Japanese survival phrasebook for tourists.
 
-**Live site:** https://drdanieldem-hub.github.io/nihongo-kit/
+**Live:** https://drdanieldem-hub.github.io/nihongo-kit/
 
 ## What's in it
 
-- 5 sections of essential phrases: Survival, Getting Around, Eating,
-  Numbers/Time/Money, Hospitality & Hotels
-- 12 Quick Grammar cards (particles, sentence patterns) — romaji only,
-  no Japanese script, with real example phrases that link to the audio button
-- Search across all phrases (English or romaji)
-- Web Speech API audio (best-effort, falls back silently on devices
-  without a `ja-JP` voice)
-- Dark mode + favorites (saved offline, in localStorage)
-- Romaji only — no kana, no kanji rendered anywhere
+5 categories of phrases + 9 grammar cards:
 
-## Repo layout
+| | |
+|---|---|
+| 🛒 **Shop** | prices, this one please, try on, just looking, allergies |
+| 🍱 **Food** | menu, recommend, water, allergy card, check, split, tap-itadakimasu |
+| 🗺 **Going** | where is X, this address (for taxis), station, last train, walk time, taxi |
+| ☀️ **Talk** | weather openers, "I'm from ~", compliments, small talk |
+| ⚡ **Grammar** | particles (wa, ga, o, ni, de, e), politeness, request verbs, yes/no questions |
+
+61 total items. **Romaji only — no kana anywhere on screen.**
+
+Each row has a ▶ button to hear the phrase spoken (Web Speech API; falls back silently to ♪ if no `ja-JP` voice). Top-bar 🔍 searches across English and romaji. 🌙 is dark mode.
+
+## Repo
+
+This is a single-file project. All the app lives in `index.html` at the repo
+root — data, styles, JS, audio logic, search, dark mode, everything. Edit
+that one file, push, the GitHub Action redeploys.
 
 ```
 nihongo-kit/
-├── build.py                  # builds dist/index.html from content/*.json + templates/
-├── content/                  # all editable content
-│   ├── meta.json             # app title, version
-│   ├── survival.json         # ~20 phrases per section
-│   ├── getting-around.json
-│   ├── eating.json
-│   ├── numbers-time-money.json
-│   ├── hospitality.json
-│   └── grammar.json          # particle/pattern cards
-├── templates/
-│   ├── shell.html            # HTML skeleton
-│   ├── app.css               # all styles, inlined at build
-│   └── app.js                # all client JS, inlined at build
-├── dist/                     # build output (gitignored)
+├── build.py          # copies index.html → dist/index.html for Pages
+├── index.html        # THE WHOLE APP — edit this
+├── dist/             # build artifact (gitignored)
 └── .github/workflows/pages.yml
 ```
 
-## Editing content
+## Use on your phone
 
-All phrases live in `content/*.json`. Run `python3 build.py --check` to
-validate before pushing.
-
-Each phrase has: `romaji`, `en`, optional `use`, `note`, `tags`, `polite`,
-`placeholders`. The `ja` field is **not rendered** anywhere — kept only as
-optional dev reference if a native reviewer wants to double-check a
-phrase (drop it in `ja` and it'll be validated but invisible).
-
-## Build
-
-```bash
-python3 build.py              # full build → dist/index.html
-python3 build.py --check      # validate content (CI step)
-python3 build.py --minify     # collapse whitespace in inline CSS/JS
-```
-
-GitHub Pages workflow auto-runs `--check` then `--minify` on every push
-to `main`.
-
-## Why romaji only?
-
-This is built for someone who can't read kana and doesn't have time to
-learn on this trip. Every phrase is shown in romanized Hepburn with macrons
-(ō = long o, ū = long u, etc.), so pronunciation is unambiguous. The
-grammar cards flag the two spelling/sound quirks (は said "wa", を said
-"o") so you don't get blindsided.
-
-## Future
-
-Stuff deferred to v2 — katakana cheat sheet, on-the-fly kana transliteration
-search, phrase audio recorded by a native speaker (currently best-effort TTS).
+Open the live URL → tap share → **Add to Home Screen**. Works offline
+once cached. No accounts, no tracking, no assets, no network requests.
