@@ -403,21 +403,27 @@
 
   // ─── Boot ───────────────────────────────────────────────────────
   function boot() {
+    var view = document.getElementById('view');
+    function report(msg) {
+      if (view) view.innerHTML = '<pre style="color:#0f172a;padding:20px;white-space:pre-wrap;font-family:ui-monospace,monospace;font-size:13px;background:#fef3c7">BOOT DIAG: ' + msg + '</pre>';
+    }
     try {
+      report('1: detectVoice');
       detectVoice();
+      report('2: loadDark');
       loadDark();
+      report('3: loadFavorites');
       loadFavorites();
+      report('4: fromHash');
       fromHash();
+      report('5: render view=' + state.view);
       render();
+      report('6: render returned, view length=' + view.innerHTML.length);
       setTimeout(detectVoice, 500);
       setTimeout(detectVoice, 2000);
     } catch (e) {
       console.error('Boot failed:', e && e.message, e && e.stack);
-      var view = document.getElementById('view');
-      if (view) {
-        view.innerHTML = '<pre style="color:#b91c1c;padding:16px;white-space:pre-wrap;font-family:ui-monospace,monospace;font-size:13px">' +
-          (e && (e.message + '\\n' + (e.stack || '').slice(0, 1200)).replace(/</g, '&lt;')) + '</pre>';
-      }
+      report('CAUGHT: ' + e.message + '\n' + (e.stack || '').slice(0, 1500));
     }
   }
   if (document.readyState === 'loading') {
